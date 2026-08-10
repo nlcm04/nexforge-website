@@ -1,0 +1,23 @@
+{
+  "name": "nexforge-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Single-page bilingual website for Nexforge — a Ho Chi Minh City merchant bank.",
+  "scripts": {
+    "css": "tailwindcss -c tailwind.config.js -i src/css/main.css -o dist/css/main.css --minify",
+    "preview": "node scripts/build-preview.mjs",
+    "build": "npm run css && npm run preview",
+    "watch": "tailwindcss -c tailwind.config.js -i src/css/main.css -o dist/css/main.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17"
+  },
+  "browserslist": [
+    "> 0.3%",
+    "last 3 versions",
+    "Safari >= 12",
+    "iOS >= 12",
+    "Firefox ESR",
+    "not dead"
+  ]
+}
