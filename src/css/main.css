@@ -63,6 +63,26 @@
   .lang-btn { @apply transition-opacity duration-300 opacity-50; }
   .lang-btn:hover, .lang-btn[aria-current="true"] { @apply opacity-100; }
 
+  /* ---- Mobile menu (hamburger + slide-down panel) ---- */
+  .nav-toggle { position:relative; width:26px; height:16px; display:inline-flex; flex-direction:column;
+    justify-content:center; gap:6px; background:none; border:0; padding:0; cursor:pointer; }
+  .nav-toggle span { display:block; height:1.5px; width:100%; background:#2E2116;
+    transition:transform .35s cubic-bezier(.2,.6,.2,1), opacity .35s cubic-bezier(.2,.6,.2,1); }
+  .site-nav.nav-open .nav-toggle span:nth-child(1){ transform:translateY(3.75px) rotate(45deg); }
+  .site-nav.nav-open .nav-toggle span:nth-child(2){ transform:translateY(-3.75px) rotate(-45deg); }
+  .nav-menu { position:absolute; left:0; right:0; top:100%; display:flex; flex-direction:column;
+    background:rgba(244,239,230,0.98); backdrop-filter:saturate(150%) blur(12px); -webkit-backdrop-filter:saturate(150%) blur(12px);
+    border-bottom:1px solid rgba(74,58,43,0.18);
+    opacity:0; transform:translateY(-8px); visibility:hidden; pointer-events:none;
+    transition:opacity .35s cubic-bezier(.2,.6,.2,1), transform .35s cubic-bezier(.2,.6,.2,1), visibility 0s linear .35s; }
+  .site-nav.nav-open .nav-menu { opacity:1; transform:none; visibility:visible; pointer-events:auto; transition-delay:0s; }
+  .nav-menu-link { @apply font-sans font-semibold uppercase; letter-spacing:0.16em; font-size:12px;
+    color:#2E2116; padding:0.9rem 1.5rem; border-top:1px solid rgba(74,58,43,0.08); transition:color .25s, background .25s; }
+  .nav-menu-link:first-child { border-top:0; }
+  .nav-menu-link:hover, .nav-menu-link:active { color:#A87C18; background:rgba(74,58,43,0.04); }
+  .site-nav.nav-open { background:rgba(244,239,230,0.98); backdrop-filter:saturate(150%) blur(12px);
+    -webkit-backdrop-filter:saturate(150%) blur(12px); border-bottom-color:rgba(74,58,43,0.18); }
+
   /* Contact email — underline wipe. */
   .email-link { background-image:linear-gradient(currentColor,currentColor);
     background-size:0% 2px; background-repeat:no-repeat; background-position:0 100%;
@@ -79,20 +99,25 @@
 
   /* Credential logos — a tidy row that reads as one set: uniform bounding box,
      muted greyscale by default, true brand colour on hover. */
-  /* Mobile: a tidy 2-column grid, each logo centered within its column.
-     Desktop (md+): a flowing flex row. */
-  .logo-row { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); align-items:center; justify-items:center; gap:1.4rem 1rem; }
-  @media (min-width:768px){ .logo-row { display:flex; flex-wrap:wrap; justify-items:initial; gap:1.15rem 1.7rem; } }
-  /* Mobile: uniform cap on both height and cell width → logos read at a consistent,
-     legible size and never overflow their column. Desktop keeps a fixed height in the flex row. */
+  /* Uniform aligned grid on every screen: 2 columns on mobile, 4 on desktop.
+     Logos line up in rows and columns (left↔right and top↕bottom) for both profiles. */
+  .logo-row { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); align-items:center; justify-items:center; gap:1.7rem 1.1rem; }
+  @media (min-width:768px){ .logo-row { grid-template-columns:repeat(4,minmax(0,1fr)); gap:2.1rem 1.5rem; } }
+  /* Outer logos hug the bio paragraph's left/right edges (first column flush-left, last flush-right);
+     the middle columns stay centered. 2 columns on mobile, 4 on desktop. */
+  @media (max-width:767px){
+    .logo-row > :nth-child(2n+1){ justify-self:start; }
+    .logo-row > :nth-child(2n){ justify-self:end; }
+  }
+  @media (min-width:768px){
+    .logo-row > :nth-child(4n+1){ justify-self:start; }
+    .logo-row > :nth-child(4n){ justify-self:end; }
+  }
+  /* Each logo capped to a consistent height and to its cell width so it reads at a uniform size and never overflows. */
   .cred-logo { height:auto; width:auto; max-height:2.6rem; max-width:100%; object-fit:contain;
     opacity:1; transition:transform 380ms cubic-bezier(.2,.6,.2,1); }
   .cred-logo:hover { transform:translateY(-1px); }
-  @media (min-width:768px){ .cred-logo { height:2rem; max-height:none; } }
-  /* Near-square logos (icon + fine print, e.g. Phat Dat) carry little visual mass next to wide
-     wordmarks — give them a bit more size so they read at parity with the rest. */
-  .cred-logo.cred-logo-sq { max-height:3.4rem; }
-  @media (min-width:768px){ .cred-logo.cred-logo-sq { height:2.6rem; max-height:none; } }
+  @media (min-width:768px){ .cred-logo { max-height:2.4rem; } }
 
   /* LinkedIn link on each profile */
   .li-link { color:rgba(74,58,43,0.55); display:inline-flex; transition:color 320ms cubic-bezier(.2,.6,.2,1), transform 320ms cubic-bezier(.2,.6,.2,1); }
@@ -154,8 +179,10 @@
 
   /* Justified body copy — left on narrow screens, justified from md up.
      Hyphenation OFF: never break words across lines (no "ad-vise" / "posi-tion"). */
-  /* Justified body copy on all sizes (mobile included). Hyphenation stays OFF so no word breaks. */
-  .justify { text-align:justify; text-justify:inter-word; -webkit-hyphens:none; hyphens:none; word-break:normal; overflow-wrap:normal; }
+  /* Justified from tablet up; left-aligned on phones so narrow lines don't open ugly word-gaps.
+     Hyphenation stays OFF either way (no "ad-vise" / "posi-tion" breaks). */
+  .justify { text-align:left; -webkit-hyphens:none; hyphens:none; word-break:normal; overflow-wrap:normal; }
+  @media (min-width:768px){ .justify { text-align:justify; text-justify:inter-word; } }
 }
 
 /* ============================================================

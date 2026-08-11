@@ -8,7 +8,9 @@
 <meta property="og:title" content="Nexforge" />
 <meta property="og:description" content="We advise, operate and build alongside private Vietnamese companies." />
 <meta property="og:type" content="website" />
-<link rel="icon" href="./assets/favicon/favicon.svg" type="image/svg+xml" />
+<link rel="icon" type="image/svg+xml" href="./assets/favicon/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32.png" />
+<link rel="apple-touch-icon" href="./assets/favicon/apple-touch-icon.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -28,11 +30,22 @@
       <a href="#people"  class="nav-link" data-nav="people"  data-i18n="nav_people">People</a>
       <a href="#contact" class="nav-link" data-nav="contact" data-i18n="nav_contact">Contact</a>
     </nav>
-    <div class="t-label text-[11px] flex items-center gap-2 text-forge" aria-label="Language">
-      <button class="lang-btn" data-set-lang="en" aria-current="true">EN</button>
-      <span class="opacity-40" aria-hidden="true">/</span>
-      <button class="lang-btn" data-set-lang="vi" aria-current="false">VI</button>
+    <div class="flex items-center gap-4">
+      <div class="t-label text-[11px] flex items-center gap-2 text-forge" aria-label="Language">
+        <button class="lang-btn" data-set-lang="en" aria-current="true">EN</button>
+        <span class="opacity-40" aria-hidden="true">/</span>
+        <button class="lang-btn" data-set-lang="vi" aria-current="false">VI</button>
+      </div>
+      <button class="nav-toggle md:hidden" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span>
+      </button>
     </div>
+  </div>
+  <div id="nav-menu" class="nav-menu md:hidden" aria-hidden="true">
+    <a href="#firm"    class="nav-menu-link" data-i18n="nav_firm">The firm</a>
+    <a href="#work"    class="nav-menu-link" data-i18n="nav_work">What we do</a>
+    <a href="#people"  class="nav-menu-link" data-i18n="nav_people">People</a>
+    <a href="#contact" class="nav-menu-link" data-i18n="nav_contact">Contact</a>
   </div>
 </header>
 
@@ -90,8 +103,8 @@
             <div class="mark-spin text-ochre-90 w-14 md:w-20 mb-8" data-mark>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><rect x="43.25" y="9.25" width="13.50" height="13.50" rx="0.81"/><rect x="60.25" y="13.81" width="13.50" height="13.50" rx="2.16"/><rect x="72.69" y="26.25" width="13.50" height="13.50" rx="4.05"/><rect x="77.25" y="43.25" width="13.50" height="13.50" rx="5.94"/><rect x="72.69" y="60.25" width="13.50" height="13.50" rx="6.75"/><rect x="60.25" y="72.69" width="13.50" height="13.50" rx="6.75"/><rect x="43.25" y="77.25" width="13.50" height="13.50" rx="6.75"/><rect x="26.25" y="72.69" width="13.50" height="13.50" rx="6.75"/><rect x="13.81" y="60.25" width="13.50" height="13.50" rx="5.94"/><rect x="9.25" y="43.25" width="13.50" height="13.50" rx="4.05"/><rect x="13.81" y="26.25" width="13.50" height="13.50" rx="2.16"/><rect x="26.25" y="13.81" width="13.50" height="13.50" rx="1.08"/></svg>
             </div>
-            <div class="h-px bg-sand max-w-[14rem]"><div class="progress-fill h-px bg-ochre-90" style="width:33%" data-progress></div></div>
-            <p class="t-label text-terra text-[11px] mt-4"><span data-index>01</span> / 03</p>
+            <div class="h-px bg-sand max-w-[14rem] hidden lg:block"><div class="progress-fill h-px bg-ochre-90" style="width:33%" data-progress></div></div>
+            <p class="t-label text-terra text-[11px] mt-4 hidden lg:block"><span data-index>01</span> / 03</p>
             <p class="t-body text-terra text-sm mt-8 max-w-[15rem] hidden lg:block" data-i18n="work_note">
               Three pillars, read as one sequence — each makes the next inevitable.
             </p>
@@ -177,45 +190,34 @@
               advisory firm focused on Vietnam — advising entrepreneurs, corporations, family-owned
               businesses and international investors across many sectors.
             </p>
-            <div class="bio-more"><div>
-              <p class="t-body text-forge text-base md:text-lg mt-4 justify" data-i18n="le_bio2">
-                Nexforge marks the next chapter of that journey — expanding from strategic advisory
-                into a model that advises, invests in and builds alongside Vietnamese businesses.
-                Here he works with founder-led and private companies to strengthen governance,
-                capital structure, reporting, management systems and long-term growth readiness.
-                Prior to LM Capital he held senior roles at HSBC Vietnam, PVI Holdings, PVI Sun Life
-                and SonKim Land. He is an alumnus of the Stanford Graduate School of Business –
-                Stanford Executive Program and holds a BSc in Business Administration (Finance) from
-                the University of Tulsa.
-              </p>
-            </div></div>
-            <button class="bio-toggle mt-6 t-label text-[11px] text-forge inline-flex items-center gap-2" aria-expanded="false">
-              <span class="bio-toggle-plus inline-block text-ochre-90 text-base leading-none">+</span>
-              <span class="bio-toggle-text">Read full biography</span>
-            </button>
+            <p class="t-body text-forge text-base md:text-lg mt-4 justify" data-i18n="le_bio2">
+              Nexforge marks the next chapter of that journey — expanding from strategic advisory
+              into a model that advises, invests in and builds alongside Vietnamese businesses.
+              Here he works with founder-led and private companies to strengthen governance,
+              capital structure, reporting, management systems and long-term growth readiness.
+              Prior to LM Capital he held senior roles at HSBC Vietnam, PVI Holdings, PVI Sun Life
+              and SonKim Land. He is an alumnus of the Stanford Graduate School of Business –
+              Stanford Executive Program and holds a BSc in Business Administration (Finance) from
+              the University of Tulsa.
+            </p>
 
-            <dl class="mt-8 pt-7 border-t hairline space-y-6">
-              <div class="grid grid-cols-1 md:grid-cols-[8rem_1fr] gap-2.5 md:gap-4 items-start md:items-center">
-                <dt class="t-label text-terra text-[10px]" data-i18n="cred_prev">Previously</dt>
-                <dd class="logo-row">
-                  <img class="cred-logo" src="./assets/img/logos/tala.webp" alt="Tala" loading="lazy" />
-                  <img class="cred-logo cred-logo-sq" src="./assets/img/logos/phatdat.webp" alt="Phat Dat" loading="lazy" />
-                  <img class="cred-logo" src="./assets/img/logos/xperise.webp" alt="Xperise" loading="lazy" />
-                  <img class="cred-logo" src="./assets/img/logos/lmcapital.webp" alt="LM Capital" loading="lazy" />
-                  <img class="cred-logo" src="./assets/img/logos/sonkimland.webp" alt="SonKim Land" loading="lazy" />
-                  <img class="cred-logo" src="./assets/img/logos/sunlife.webp" alt="Sun Life" loading="lazy" />
-                  <img class="cred-logo" src="./assets/img/logos/pvi.webp" alt="PVI Holdings" loading="lazy" />
-                  <img class="cred-logo" src="./assets/img/logos/hsbc.webp" alt="HSBC" loading="lazy" />
-                </dd>
+            <div class="mt-8 pt-7 border-t hairline">
+              <div class="logo-row">
+                <img class="cred-logo" src="./assets/img/logos/tala.webp" alt="Tala" loading="lazy" />
+                <img class="cred-logo" src="./assets/img/logos/phatdat.webp" alt="Phat Dat" loading="lazy" />
+                <img class="cred-logo" src="./assets/img/logos/xperise.webp" alt="Xperise" loading="lazy" />
+                <img class="cred-logo" src="./assets/img/logos/lmcapital.webp" alt="LM Capital" loading="lazy" />
+                <img class="cred-logo" src="./assets/img/logos/sonkimland.webp" alt="SonKim Land" loading="lazy" />
+                <img class="cred-logo" src="./assets/img/logos/sunlife.webp" alt="Sun Life" loading="lazy" />
+                <img class="cred-logo" src="./assets/img/logos/pvi.webp" alt="PVI Holdings" loading="lazy" />
+                <img class="cred-logo" src="./assets/img/logos/hsbc.webp" alt="HSBC" loading="lazy" />
               </div>
-              <div class="grid grid-cols-1 md:grid-cols-[8rem_1fr] gap-2.5 md:gap-4 items-start md:items-center">
-                <dt class="t-label text-terra text-[10px]" data-i18n="cred_edu">Education</dt>
-                <dd class="logo-row">
-                  <img class="cred-logo" src="./assets/img/logos/stanford.webp" alt="Stanford Graduate School of Business" loading="lazy" />
-                  <img class="cred-logo" src="./assets/img/logos/tulsa.webp" alt="University of Tulsa" loading="lazy" />
-                </dd>
+              <p class="t-label text-terra text-[10px] mt-8 mb-4" data-i18n="cred_edu">Education</p>
+              <div class="logo-row">
+                <img class="cred-logo" src="./assets/img/logos/stanford.webp" alt="Stanford Graduate School of Business" loading="lazy" />
+                <img class="cred-logo" src="./assets/img/logos/tulsa.webp" alt="University of Tulsa" loading="lazy" />
               </div>
-            </dl>
+            </div>
           </div>
         </div>
       </article>
@@ -232,7 +234,7 @@
               <div>
                 <h3 class="t-h2 text-forge text-3xl md:text-4xl">Kelly Wong</h3>
                 <p class="font-sans font-semibold text-terra text-[13px] md:text-sm mt-2 leading-snug">
-                  <span data-i18n="kelly_title1">Senior Advisor, Nexforge</span><br/>
+                  <span data-i18n="kelly_title1">Co-Founder &amp; Senior Advisor, Nexforge</span><br/>
                   <span data-i18n="kelly_title2">Senior Advisor, LM Capital</span>
                 </p>
               </div>
@@ -252,24 +254,19 @@
               Managing Director of Corporate Advisory at Ho Chi Minh City Securities (HSC), working
               across M&amp;A and capital markets for Vietnamese corporates.
             </p>
-            <dl class="mt-8 pt-7 border-t hairline space-y-6">
-              <div class="grid grid-cols-1 md:grid-cols-[8rem_1fr] gap-2.5 md:gap-4 items-start md:items-center">
-                <dt class="t-label text-terra text-[10px]" data-i18n="cred_prev">Previously</dt>
-                <dd class="logo-row">
-                  <img class="cred-logo" src="./assets/img/logos/vng.webp" alt="VNG" loading="lazy" />
-                  <img class="cred-logo" src="./assets/img/logos/kido.webp" alt="KIDO Group" loading="lazy" />
-                  <img class="cred-logo" src="./assets/img/logos/hsc.webp" alt="Ho Chi Minh City Securities (HSC)" loading="lazy" />
-                  <img class="cred-logo" src="./assets/img/logos/hsbc.webp" alt="HSBC" loading="lazy" />
-                </dd>
+            <div class="mt-8 pt-7 border-t hairline">
+              <div class="logo-row">
+                <img class="cred-logo" src="./assets/img/logos/vng.webp" alt="VNG" loading="lazy" />
+                <img class="cred-logo" src="./assets/img/logos/kido.webp" alt="KIDO Group" loading="lazy" />
+                <img class="cred-logo" src="./assets/img/logos/hsc.webp" alt="Ho Chi Minh City Securities (HSC)" loading="lazy" />
+                <img class="cred-logo" src="./assets/img/logos/hsbc.webp" alt="HSBC" loading="lazy" />
               </div>
-              <div class="grid grid-cols-1 md:grid-cols-[8rem_1fr] gap-2.5 md:gap-4 items-start md:items-center">
-                <dt class="t-label text-terra text-[10px]" data-i18n="cred_edu">Education</dt>
-                <dd class="logo-row">
-                  <img class="cred-logo" src="./assets/img/logos/stanford.webp" alt="Stanford Graduate School of Business" loading="lazy" />
-                  <img class="cred-logo" src="./assets/img/logos/ubc.webp" alt="University of British Columbia" loading="lazy" />
-                </dd>
+              <p class="t-label text-terra text-[10px] mt-8 mb-4" data-i18n="cred_edu">Education</p>
+              <div class="logo-row">
+                <img class="cred-logo" src="./assets/img/logos/stanford.webp" alt="Stanford Graduate School of Business" loading="lazy" />
+                <img class="cred-logo" src="./assets/img/logos/ubc.webp" alt="University of British Columbia" loading="lazy" />
               </div>
-            </dl>
+            </div>
           </div>
         </div>
       </article>

@@ -122,6 +122,22 @@
     });
   }
 
+  /* ---- mobile menu (hamburger) ---- */
+  var navToggle = document.querySelector('.nav-toggle');
+  var navMenu = document.getElementById('nav-menu');
+  if (nav && navToggle && navMenu) {
+    function setMenu(open) {
+      nav.classList.toggle('nav-open', open);
+      navToggle.setAttribute('aria-expanded', String(open));
+      navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      navMenu.setAttribute('aria-hidden', String(!open));
+    }
+    navToggle.addEventListener('click', function () { setMenu(!nav.classList.contains('nav-open')); });
+    navMenu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+    window.addEventListener('resize', function () { if (window.innerWidth >= 768) setMenu(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+  }
+
   /* ---- i18n: EN authored · VI transcreated (natural, not literal) ---- */
   var I18N = {
     en: {
@@ -136,7 +152,7 @@
       p2_h: 'Operate', p2_b: 'When appropriate, we take a stake and help operate what we own. This creates accountability and aligns interests, ensuring we are truly on the side of the founder. Advice you are accountable for is a different thing from advice you deliver.',
       p3_h: 'Build', p3_b: 'Where a company needs something that does not exist to buy or borrow, we help build it — taking a share of the value we help create rather than just a fee.',
       le_title1: 'Co-Founder, Nexforge', le_title2: 'Founder & Managing Partner, LM Capital',
-      kelly_title1: 'Senior Advisor, Nexforge', kelly_title2: 'Senior Advisor, LM Capital',
+      kelly_title1: 'Co-Founder & Senior Advisor, Nexforge', kelly_title2: 'Senior Advisor, LM Capital',
       cred_prev: 'Previously', cred_edu: 'Education',
       le_bio: 'Vũ Thành Lê is Co-Founder of Nexforge and Founder & Managing Partner of LM Capital, with more than eighteen years across investment, corporate finance, M&A, capital raising, real estate, insurance, financial services and business transformation. Over the past decade he has built LM Capital into an independent strategic and financial advisory firm focused on Vietnam — advising entrepreneurs, corporations, family-owned businesses and international investors across many sectors.',
       le_bio2: 'Nexforge marks the next chapter of that journey — expanding from strategic advisory into a model that advises, invests in and builds alongside Vietnamese businesses. Here he works with founder-led and private companies to strengthen governance, capital structure, reporting, management systems and long-term growth readiness. Prior to LM Capital he held senior roles at HSBC Vietnam, PVI Holdings, PVI Sun Life and SonKim Land. He is an alumnus of the Stanford Graduate School of Business – Stanford Executive Program and holds a BSc in Business Administration (Finance) from the University of Tulsa.',
@@ -160,7 +176,7 @@
       p2_h: 'Vận hành', p2_b: 'Khi phù hợp, chúng tôi tham gia sở hữu và cùng vận hành. Điều đó tạo ra trách nhiệm và gắn kết lợi ích, để chúng tôi thật sự đứng về phía nhà sáng lập. Lời khuyên mà mình phải chịu trách nhiệm khác hẳn với lời khuyên chỉ để đưa ra.',
       p3_h: 'Kiến tạo', p3_b: 'Và khi doanh nghiệp cần một thứ không có sẵn để mua hay vay mượn, chúng tôi cùng xây dựng nên nó — nhận một phần giá trị tạo ra thay vì chỉ một khoản phí.',
       le_title1: 'Đồng sáng lập, Nexforge', le_title2: 'Nhà sáng lập & Thành viên Hợp danh Điều hành, LM Capital',
-      kelly_title1: 'Cố vấn Cấp cao, Nexforge', kelly_title2: 'Cố vấn Cấp cao, LM Capital',
+      kelly_title1: 'Đồng sáng lập & Cố vấn Cấp cao, Nexforge', kelly_title2: 'Cố vấn Cấp cao, LM Capital',
       cred_prev: 'Trước đây', cred_edu: 'Học vấn',
       le_bio: 'Ông Vũ Thành Lê là Đồng sáng lập của Nexforge và Nhà sáng lập kiêm Thành viên Hợp danh Điều hành của LM Capital, với hơn mười tám năm kinh nghiệm trong đầu tư, tài chính doanh nghiệp, M&A, huy động vốn, bất động sản, bảo hiểm, dịch vụ tài chính và chuyển đổi doanh nghiệp. Suốt thập kỷ qua, ông đã xây dựng LM Capital thành công ty tư vấn chiến lược và tài chính độc lập tập trung vào Việt Nam — đồng hành cùng các doanh nhân, tập đoàn, doanh nghiệp gia đình và nhà đầu tư quốc tế trên nhiều lĩnh vực.',
       le_bio2: 'Nexforge là chương tiếp theo của hành trình đó — mở rộng từ tư vấn chiến lược sang một mô hình vừa tư vấn, vừa đầu tư và cùng kiến tạo với doanh nghiệp Việt Nam. Tại đây, ông làm việc với các công ty tư nhân do nhà sáng lập dẫn dắt để củng cố quản trị, cấu trúc vốn, hệ thống báo cáo, hệ thống quản lý và năng lực tăng trưởng dài hạn. Trước LM Capital, ông từng giữ các vị trí cấp cao tại HSBC Việt Nam, PVI Holdings, PVI Sun Life và SonKim Land. Ông là cựu học viên Chương trình Điều hành của Trường Kinh doanh Sau đại học Stanford và có bằng Cử nhân Quản trị Kinh doanh, chuyên ngành Tài chính, của Đại học Tulsa.',

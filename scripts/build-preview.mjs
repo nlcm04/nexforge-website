@@ -22,7 +22,14 @@ html = html.replace(/src="\.\/assets\/img\/([a-z0-9/_-]+\.(webp|png|jpe?g|svg))"
   return 'src="data:' + mime + ';base64,' + b64 + '"';
 });
 
-html = html.replace(/<link rel="icon"[^>]*>/, '<link rel="icon" href="data:,">');
+// Inline favicon assets (svg + png) as data URIs so the single-file build keeps its icon.
+html = html.replace(/href="\.\/assets\/favicon\/([a-z0-9._-]+\.(svg|png))"/gi, (m, file, ext) => {
+  const p = root + 'src/assets/favicon/' + file;
+  if (!existsSync(p)) return m;
+  if (ext.toLowerCase() === 'svg')
+    return 'href="data:image/svg+xml;utf8,' + encodeURIComponent(readFileSync(p, 'utf8')) + '"';
+  return 'href="data:image/png;base64,' + readFileSync(p).toString('base64') + '"';
+});
 html = html.replace('<head>', '<head>\n<!-- SELF-CONTAINED PREVIEW · generated from src/ by scripts/build-preview.mjs · do not hand-edit -->');
 
 writeFileSync(root + 'preview.html', html);
