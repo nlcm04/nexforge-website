@@ -100,17 +100,18 @@
   /* Credential logos — one even logo wall. Fixed-height rows give perfect top↕bottom
      alignment; each logo is capped in BOTH height and width so no single logo dominates
      (uniform optical size). Outer columns hug the bio's left↔right edges. 2 cols mobile / 4 desktop. */
-  /* Every logo is normalised to the SAME height, so they all read at a consistent size
-     (no logo taller or shorter than the rest). Widths vary with each logo's shape.
-     Fixed-height rows keep them aligned top↕bottom; the outer columns sit flush with the
-     bio's left / right edges. 2 columns on mobile, 4 on desktop. */
+  /* Every logo is given the SAME width, so the visible left and right edges line up
+     column-by-column (Phat Dat / LM Capital / Sun Life / HSBC share one left line and one
+     right line — and likewise every other column). Each logo keeps its natural proportion,
+     so heights vary a little with the logo's shape. Outer columns sit flush with the bio's
+     left / right edges. 2 columns on mobile, 4 on desktop. */
   .logo-row { display:grid; grid-template-columns:repeat(2,minmax(0,1fr));
     align-items:center; justify-items:center; column-gap:1.5rem; row-gap:1.15rem; }
   @media (min-width:768px){ .logo-row { grid-template-columns:repeat(4,minmax(0,1fr)); column-gap:1.75rem; row-gap:1.25rem; } }
-  .cred-logo { height:2rem; width:auto; max-width:100%; object-fit:contain; opacity:1;
+  .cred-logo { width:8rem; max-width:100%; height:auto; opacity:1;
     transition:transform 380ms cubic-bezier(.2,.6,.2,1); }
   .cred-logo:hover { transform:translateY(-1px); }
-  @media (min-width:768px){ .cred-logo { height:1.9rem; } }
+  @media (min-width:768px){ .cred-logo { width:8.5rem; } }
   @media (max-width:767px){
     .logo-row > :nth-child(2n+1){ justify-self:start; }
     .logo-row > :nth-child(2n){ justify-self:end; }
